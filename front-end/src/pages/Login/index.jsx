@@ -29,6 +29,7 @@ export default function Login({history}) {
           placeholder="Digite seu usuário do GitHub"
           value={username}
           onChange={event => setUsername(event.target.value)}
+          autoFocus
         />
 
         <button type="submit">Enviar</button>
