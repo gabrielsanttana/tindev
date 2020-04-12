@@ -10,7 +10,7 @@ module.exports = {
 
     const devList = await Dev.find({
       $and: [
-        {_id: {$ne: user } },
+        {_id: {$ne: userID } },
         {_id: {$nin: loggedDev. likes}},
         {_id: {$nin: loggedDev. dislikes}}
       ]
