@@ -40,9 +40,9 @@ export default function Main() {
 
       {matchDev && (
         <div>
-          <img src="" alt=""/>
+          <img src="" alt="match"/>
 
-          <img src="" alt=""/>
+          <img src="" alt="dev-match"/>
           <strong></strong>
           <p></p>
 
