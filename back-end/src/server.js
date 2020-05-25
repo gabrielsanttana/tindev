@@ -7,7 +7,7 @@ const routes = require('./routes');
 
 const app = express();
 
-mongoose.connect(`mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.PASSWORD}@cluster0-lfmbb.mongodb.net/tindev`, {
+mongoose.connect(`mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@cluster0-lfmbb.mongodb.net/tindev`, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
