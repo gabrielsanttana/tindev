@@ -12,12 +12,26 @@ import './styles.css';
 
 export default function Main() {
   const [users, setUsers] = useState([]);
-  const [matchDev, setMatchDev] = useState(true);
+  const [matchDev, setMatchDev] = useState(false);
 
-  async function handleDislike() {
+  async function handleLike(userId) {
+    await api.post(`/devs/${userId}/likes`, null, {
+      headers: {
+        user: match.params.id
+      }
+    });
+
+    setUsers(users.filter(user => user.id === userId));
   }
 
-  async function handleLike() {
+  async function handleDislike(userId) {
+    await api.post(`/devs/${userId}/dislikes`, null, {
+      headers: {
+        user: match.params.id
+      }
+    });
+
+    setUsers(users.filter(user => user.id === userId));
   }
 
   return (
@@ -26,116 +40,32 @@ export default function Main() {
         <img src={logo} alt="Tindev Logo" />
       </Link>
 
+      {users.length > 0 ? (
         <ul>
-            <li key={2}>
-              <img src="https://avatars3.githubusercontent.com/u/47339825?s=460&u=dbf13c0c1865ffa4e2bc8535c2e32bccc957251d&v=4" alt={'Gabriel'}/>
+          {users.map(user => (
+            <li key={user._id}>
+              <img src={user.avatar} alt={'Gabriel'}/>
               <footer>
-                <strong>Gabriel</strong>
-                <p>Software Developer</p>
+                <strong>{user.name}</strong>
+                <p>{user.bio}</p>
               </footer>
 
               <div className="buttons">
-                <button type="button" onClick={() => handleDislike(1)}>
+                <button type="button" onClick={() => handleDislike(user._id)}>
                   <img src={dislike} alt="dislike" />
                 </button>
 
-                <button type="button" onClick={() => handleLike()}>
+                <button type="button" onClick={() => handleLike(user._id)}>
                   <img src={like} alt="like" />
                 </button>
               </div>
             </li>
-
-            <li key={2}>
-              <img src="https://avatars3.githubusercontent.com/u/47339825?s=460&u=dbf13c0c1865ffa4e2bc8535c2e32bccc957251d&v=4" alt={'Gabriel'}/>
-              <footer>
-                <strong>Gabriel</strong>
-                <p>Software Developer</p>
-              </footer>
-
-              <div className="buttons">
-                <button type="button" onClick={() => handleDislike(1)}>
-                  <img src={dislike} alt="dislike" />
-                </button>
-
-                <button type="button" onClick={() => handleLike()}>
-                  <img src={like} alt="like" />
-                </button>
-              </div>
-            </li>
-
-            <li key={2}>
-              <img src="https://avatars3.githubusercontent.com/u/47339825?s=460&u=dbf13c0c1865ffa4e2bc8535c2e32bccc957251d&v=4" alt={'Gabriel'}/>
-              <footer>
-                <strong>Gabriel</strong>
-                <p>Software Developer</p>
-              </footer>
-
-              <div className="buttons">
-                <button type="button" onClick={() => handleDislike(1)}>
-                  <img src={dislike} alt="dislike" />
-                </button>
-
-                <button type="button" onClick={() => handleLike()}>
-                  <img src={like} alt="like" />
-                </button>
-              </div>
-            </li>
-
-            <li key={2}>
-              <img src="https://avatars3.githubusercontent.com/u/47339825?s=460&u=dbf13c0c1865ffa4e2bc8535c2e32bccc957251d&v=4" alt={'Gabriel'}/>
-              <footer>
-                <strong>Gabriel</strong>
-                <p>Software Developer</p>
-              </footer>
-
-              <div className="buttons">
-                <button type="button" onClick={() => handleDislike(1)}>
-                  <img src={dislike} alt="dislike" />
-                </button>
-
-                <button type="button" onClick={() => handleLike()}>
-                  <img src={like} alt="like" />
-                </button>
-              </div>
-            </li>
-
-            <li key={2}>
-              <img src="https://avatars3.githubusercontent.com/u/47339825?s=460&u=dbf13c0c1865ffa4e2bc8535c2e32bccc957251d&v=4" alt={'Gabriel'}/>
-              <footer>
-                <strong>Gabriel</strong>
-                <p>Software Developer</p>
-              </footer>
-
-              <div className="buttons">
-                <button type="button" onClick={() => handleDislike(1)}>
-                  <img src={dislike} alt="dislike" />
-                </button>
-
-                <button type="button" onClick={() => handleLike()}>
-                  <img src={like} alt="like" />
-                </button>
-              </div>
-            </li>
-
-            <li key={2}>
-              <img src="https://avatars3.githubusercontent.com/u/47339825?s=460&u=dbf13c0c1865ffa4e2bc8535c2e32bccc957251d&v=4" alt={'Gabriel'}/>
-              <footer>
-                <strong>Gabriel</strong>
-                <p>Software Developer</p>
-              </footer>
-
-              <div className="buttons">
-                <button type="button" onClick={() => handleDislike(1)}>
-                  <img src={dislike} alt="dislike" />
-                </button>
-
-                <button type="button" onClick={() => handleLike()}>
-                  <img src={like} alt="like" />
-                </button>
-              </div>
-            </li>
+          ))}
         </ul>
-
+      ) : (
+        <div className="empty">Sem devs no momento :(</div>
+      )}
+        
       {matchDev && (
         <div className="match-container">
           <img src={itsamatch} alt="match"/>
@@ -144,7 +74,7 @@ export default function Main() {
           <strong>Gabriel Santana</strong>
           <p>Software Developer</p>
 
-          <button>Fechar</button>
+          <button type="button" onClick={() => setMatchDev(false)}>Fechar</button>
         </div>
       )}
     </div>
