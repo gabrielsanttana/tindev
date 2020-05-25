@@ -1,5 +1,6 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {Link} from 'react-router-dom';
+import io from 'socket.io-client';
 
 import api from '../../services/api';
 
@@ -10,9 +11,35 @@ import itsamatch from '../../assets/itsamatch.png';
 
 import './styles.css';
 
-export default function Main() {
+export default function Main({match}) {
   const [users, setUsers] = useState([]);
   const [matchDev, setMatchDev] = useState(false);
+
+  useEffect(() => {
+    async function loadUsers() {
+      const response = await api.post('/devs', {
+        headers: {
+          user: match.params.id
+        }
+      });
+
+      setUsers(response.data);
+    }
+
+    loadUsers();
+  }, [match.params.id]);
+
+  useEffect(() => {
+    const socket = io('http://localhost:3333', {
+      query: {
+        user: match.params.id
+      }
+    });
+
+    socket.on('match', dev => {
+      setMatchDev(dev);
+    });
+  }, [match.params.id]);
 
   async function handleLike(userId) {
     await api.post(`/devs/${userId}/likes`, null, {
