@@ -1,4 +1,6 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div align="center">
+  <img src="https://raw.githubusercontent.com/gabrielsanttana/tindev/d48c956d7bc9dc7419b446f30ecb80f53dbc1c70/front-end/src/assets/logo.svg"/>
+</div>
 
 ## Available Scripts
 
