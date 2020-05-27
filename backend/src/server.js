@@ -18,7 +18,7 @@ io.on('connection', socket => {
   console.log(`Connected user: ${user}`);
 });
 
-mongoose.connect(`mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@cluster0-lfmbb.mongodb.net/tindev`, {
+mongoose.connect(`mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@${MONGODB_CLUSTER_URL}/tindev`, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
