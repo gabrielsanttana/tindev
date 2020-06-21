@@ -32,7 +32,7 @@
 ## 🚀 Installation:
 
 ```
-$ git clone https://github.com/gabrielsanttana/aircnc
+$ git clone https://github.com/gabrielsanttana/tindev
 ```
 
 #### API
@@ -46,7 +46,7 @@ MONGODB_CLUSTER_URL=your_cluster_url
 ```
 
 ```
-mongoose.connect(`mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@${process.env.MONGODB_CLUSTER_URL}/aircnc`)
+mongoose.connect(`mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@${process.env.MONGODB_CLUSTER_URL}/tindev`)
 ```
 
 If you prefer, just place your connection string on the server.js file.
@@ -54,7 +54,7 @@ If you prefer, just place your connection string on the server.js file.
 Then:
 
 ```bash
-$ cd aircnc/backend
+$ cd tindev/backend
 $ npm install
 $ node src/server.js
 ```
@@ -64,7 +64,7 @@ The API will start serving on http://localhost:3333
 #### Web
 
 ```bash
-$ cd aircnc/frontend
+$ cd tindev/frontend
 $ npm install
 $ npm start 
 ```
@@ -73,4 +73,4 @@ The application will pop-up in the browser on http://localhost:3000
 
 ## ⚖️ License:
 
-[MIT License](https://github.com/gabrielsanttana/aircnc/blob/master/LICENSE)
+[MIT License](https://github.com/gabrielsanttana/tindev/blob/master/LICENSE)
