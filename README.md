@@ -6,7 +6,7 @@
 
 <p align="center">A Tinder clone that makes matches between developers 🔥</p>
 
-## 🛠️ Technologies:
+## 🛠️ Technologies
 
 <ul>
   <li><a href="https://nodejs.org/en/">Node.js</a></li>
@@ -19,7 +19,7 @@
   <li><a href="https://socket.io/">Socket.io</a></li>
 </ul>
 
-## ⚙️ Requirements:
+## ⚙️ Requirements
 
 <ul>
   <li><a href="https://nodejs.org/en/">Node.js</a></li>
@@ -29,7 +29,7 @@
   <li><a href="https://www.mongodb.com/cloud/atlas">MongoDB Atlas Cluster</a></li>
 </ul>
 
-## 🚀 Installation:
+## 🚀 Installation
 
 ```
 $ git clone https://github.com/gabrielsanttana/tindev
@@ -71,6 +71,6 @@ $ npm start
 
 The application will pop-up in the browser on http://localhost:3000
 
-## ⚖️ License:
+## ⚖️ License
 
 [MIT License](https://github.com/gabrielsanttana/tindev/blob/master/LICENSE)
