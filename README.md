@@ -35,7 +35,7 @@
 $ git clone https://github.com/gabrielsanttana/tindev
 ```
 
-#### API
+### API
 
 Before running the API, it's necessary to have a database setup on a MongoDB Atlas Cluster. After getting it, create a .env file in the project root and put these keys in environment variables and they'll work on the mongoose connection string:
 
@@ -61,7 +61,7 @@ $ node src/server.js
 
 The API will start serving on http://localhost:3333
 
-#### Web
+### Web
 
 ```bash
 $ cd tindev/frontend
