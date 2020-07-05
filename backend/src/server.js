@@ -12,16 +12,19 @@ const io = require('socket.io')(server);
 
 const connectedUsers = {};
 
-io.on('connection', socket => {
+io.on('connection', (socket) => {
   const {user} = socket.handshake.query;
   connectedUsers[user] = socket.id;
   console.log(`Connected user: ${user}`);
 });
 
-mongoose.connect(`mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@${MONGODB_CLUSTER_URL}/tindev`, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+mongoose.connect(
+  `mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@${process.env.MONGODB_CLUSTER_URL}/tindev`,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  },
+);
 
 app.use((req, res, next) => {
   req.io = io;
