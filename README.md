@@ -31,13 +31,13 @@
 
 ## 🚀 Installation
 
-```
+```bash
 $ git clone https://github.com/gabrielsanttana/tindev
 ```
 
 ### 🗄️ API
 
-Before running the API, it's necessary to have a database setup on a MongoDB Atlas Cluster. After getting it, create a `.env` file in the backend folder root and put these keys in environment variables and they'll work on the mongoose connection string.
+Before running the API, it's necessary to have a database setup on a MongoDB Atlas Cluster. With that, create a `.env` file in the backend folder root and put these keys in environment variables and they'll work on the mongoose connection string. 
 
 Example:
 
@@ -47,10 +47,11 @@ MONGODB_PASSWORD=123456
 MONGODB_CLUSTER_URL=cluster0-lfmbb.mongodb.net
 ```
 
-If you prefer, you can just place your connection string on the server.js file:
+If you prefer, you can just place your connection string on the `server.js` file:
 
 ```
 mongoose.connect(`mongodb+srv...`);
+```
 
 Then:
 
@@ -74,8 +75,8 @@ The application will pop-up in the browser on http://localhost:3000
 
 ### 📱 Mobile
 
-To run the mobile application, it's necessary to have an React Native Expo environment setup and the Expo mobile app installed on your smartphone.
-It's also necessary that both the smartphone and the computer are connected to the same network.
+It's also necessary to have an React Native Expo environment setup and the Expo mobile app installed on your smartphone.
+It's important that both the smartphone and the computer are connected to the same network and to put the local IP address on the baseURL in the `api.js` file.
 
 With that:
 
