@@ -3,10 +3,9 @@ import {Link} from 'react-router-dom';
 import io from 'socket.io-client';
 
 import api from '../../services/api';
+import UserCard from '../../components/UserCard';
 
 import logo from '../../assets/logo.svg';
-import like from '../../assets/like.svg';
-import dislike from '../../assets/dislike.svg';
 import itsamatch from '../../assets/itsamatch.png';
 
 import './styles.css';
@@ -70,23 +69,15 @@ export default function Main({match}) {
       {users.length > 0 ? (
         <ul>
           {users.map((user) => (
-            <li key={user._id}>
-              <img src={user.avatar} alt={'Gabriel'} />
-              <footer>
-                <strong>{user.name}</strong>
-                <p>{user.bio}</p>
-              </footer>
-
-              <div className="buttons">
-                <button type="button" onClick={() => handleDislike(user._id)}>
-                  <img src={dislike} alt="dislike" />
-                </button>
-
-                <button type="button" onClick={() => handleLike(user._id)}>
-                  <img src={like} alt="like" />
-                </button>
-              </div>
-            </li>
+            <UserCard
+              key={user._id}
+              id={user._id}
+              name={user.name}
+              bio={user.bio}
+              avatar={user.avatar}
+              onLike={() => handleLike(user._id)}
+              onDislike={() => handleDislike(user._id)}
+            />
           ))}
         </ul>
       ) : (
