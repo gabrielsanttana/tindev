@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import {Link} from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import io from 'socket.io-client';
 
 import api from '../../services/api';
@@ -11,7 +11,7 @@ import itsamatch from '../../assets/itsamatch.png';
 
 import './styles.css';
 
-export default function Main({match}) {
+export default function Main({ match }) {
   const [users, setUsers] = useState([]);
   const [matchDev, setMatchDev] = useState(false);
 
@@ -71,7 +71,7 @@ export default function Main({match}) {
         <ul>
           {users.map(user => (
             <li key={user._id}>
-              <img src={user.avatar} alt={'Gabriel'}/>
+              <img src={user.avatar} alt={'Gabriel'} />
               <footer>
                 <strong>{user.name}</strong>
                 <p>{user.bio}</p>
@@ -90,14 +90,14 @@ export default function Main({match}) {
           ))}
         </ul>
       ) : (
-        <div className="empty">Sem devs no momento :(</div>
-      )}
-        
+          <div className="empty">Sem devs no momento <br />:(</div>
+        )}
+
       {matchDev && (
         <div className="match-container">
-          <img src={itsamatch} alt="match"/>
+          <img src={itsamatch} alt="match" />
 
-          <img className="avatar" src="https://avatars3.githubusercontent.com/u/47339825?s=460&u=dbf13c0c1865ffa4e2bc8535c2e32bccc957251d&v=4" alt="dev-match"/>
+          <img className="avatar" src="https://avatars3.githubusercontent.com/u/47339825?s=460&u=dbf13c0c1865ffa4e2bc8535c2e32bccc957251d&v=4" alt="dev-match" />
           <strong>Gabriel Santana</strong>
           <p>Software Developer</p>
 
