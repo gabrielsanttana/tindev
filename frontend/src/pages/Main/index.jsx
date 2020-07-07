@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import React, {useState, useEffect} from 'react';
+import {Link} from 'react-router-dom';
 import io from 'socket.io-client';
 
 import api from '../../services/api';
@@ -11,7 +11,7 @@ import itsamatch from '../../assets/itsamatch.png';
 
 import './styles.css';
 
-export default function Main({ match }) {
+export default function Main({match}) {
   const [users, setUsers] = useState([]);
   const [matchDev, setMatchDev] = useState(false);
 
@@ -19,8 +19,8 @@ export default function Main({ match }) {
     async function loadUsers() {
       const response = await api.post('/devs', {
         headers: {
-          user: match.params.id
-        }
+          user: match.params.id,
+        },
       });
 
       setUsers(response.data);
@@ -32,11 +32,11 @@ export default function Main({ match }) {
   useEffect(() => {
     const socket = io('http://localhost:3333', {
       query: {
-        user: match.params.id
-      }
+        user: match.params.id,
+      },
     });
 
-    socket.on('match', dev => {
+    socket.on('match', (dev) => {
       setMatchDev(dev);
     });
   }, [match.params.id]);
@@ -44,21 +44,21 @@ export default function Main({ match }) {
   async function handleLike(userId) {
     await api.post(`/devs/${userId}/likes`, null, {
       headers: {
-        user: match.params.id
-      }
+        user: match.params.id,
+      },
     });
 
-    setUsers(users.filter(user => user.id === userId));
+    setUsers(users.filter((user) => user.id === userId));
   }
 
   async function handleDislike(userId) {
     await api.post(`/devs/${userId}/dislikes`, null, {
       headers: {
-        user: match.params.id
-      }
+        user: match.params.id,
+      },
     });
 
-    setUsers(users.filter(user => user.id === userId));
+    setUsers(users.filter((user) => user.id === userId));
   }
 
   return (
@@ -69,7 +69,7 @@ export default function Main({ match }) {
 
       {users.length > 0 ? (
         <ul>
-          {users.map(user => (
+          {users.map((user) => (
             <li key={user._id}>
               <img src={user.avatar} alt={'Gabriel'} />
               <footer>
@@ -90,18 +90,23 @@ export default function Main({ match }) {
           ))}
         </ul>
       ) : (
-          <div className="empty">Sem devs no momento <br />:(</div>
-        )}
+        <div className="empty">
+          Sem devs no momento <br />
+          :(
+        </div>
+      )}
 
       {matchDev && (
         <div className="match-container">
           <img src={itsamatch} alt="match" />
 
-          <img className="avatar" src="https://avatars3.githubusercontent.com/u/47339825?s=460&u=dbf13c0c1865ffa4e2bc8535c2e32bccc957251d&v=4" alt="dev-match" />
-          <strong>Gabriel Santana</strong>
-          <p>Software Developer</p>
+          <img className="avatar" src={matchDev.avatar} alt="dev-match" />
+          <strong>{matchDev.name}</strong>
+          <p>{matchDev.bio}</p>
 
-          <button type="button" onClick={() => setMatchDev(false)}>Fechar</button>
+          <button type="button" onClick={() => setMatchDev(false)}>
+            Fechar
+          </button>
         </div>
       )}
     </div>
