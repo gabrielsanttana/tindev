@@ -79,20 +79,7 @@ The application will pop-up in the browser on http://localhost:3000
 
 ### 📱 Mobile
 
-It's also necessary to have an React Native Expo environment setup and the Expo mobile app installed on your smartphone.
-It's important that both the smartphone and the computer are connected to the same network and to put the local IP address on the baseURL in the `api.js` file.
-
-With that:
-
-```bash
-$ cd be-the-hero/mobile
-$ npm install -g expo-cli
-$ npm install
-$ npm start
-```
-
-<p>A new window with application log will open in the browser</p>
-<p>Then, you can simply load the app by scanning the QR code with the Expo mobile app or by using the local URL</p>
+🚧 Under construction 🚧
 
 ## ⚖️ License
 
